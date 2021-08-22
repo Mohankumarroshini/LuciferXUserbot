@@ -9,7 +9,7 @@ class Development(Config):
 
   # the name to display in your alive message.
   # If not filled anything then default value is AuraX User.
-  ALIVE_NAME = "AuraX User"
+  ALIVE_NAME = "LuciferX User"
 
   # create any PostgreSQL database.
   # I recommend to use elephantsql and paste that link here
