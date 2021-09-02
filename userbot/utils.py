@@ -61,9 +61,9 @@ def load_module(shortname):
         sys.modules["uniborg.util"] = userbot.utils
         mod.Config = Config
         mod.borg = bot
-        mod.AuraXBot = bot
+        mod.LuciferXBot = bot
         mod.edit_or_reply = edit_or_reply
-        mod.delete_AuraX = delete_AuraX
+        mod.delete_LuciferX = delete_LuciferX
         # support for AuraXBot originals
         sys.modules["LuciferXBot.utils"] = userbot.utils
         sys.modules["LuciferXBot"] = userbot
@@ -120,7 +120,7 @@ def admin_cmd(pattern=None, command=None, **args):
             elif len(Config.COMMAND_HAND_LER) == 1:
                 LuciferXreg = "^\\" + Config.COMMAND_HAND_LER
                 reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(AuraXreg + pattern)
+            args["pattern"] = re.compile(LuciferXreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -183,7 +183,7 @@ def sudo_cmd(pattern=None, command=None, **args):
                 LuciferXreg = "^" + Config.SUDO_COMMAND_HAND_LER
                 reg = Config.SUDO_COMMAND_HAND_LER[1]
             elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
-                AuraXreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
+                LuciferXreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
                 reg = Config.COMMAND_HAND_LER
             args["pattern"] = re.compile(LuciferXreg + pattern)
             if command is not None:
@@ -284,13 +284,13 @@ async def edit_or_reply(
     await event.delete()
     os.remove(file_name)
 
-async def delete_AuraX(event, text, time=None, parse_mode=None, link_preview=None):
+async def delete_LuciferX(event, text, time=None, parse_mode=None, link_preview=None):
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 5
     if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
-        AuraXevent = (
+        LuciferXevent = (
             await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
             if reply_to
             else await event.reply(
@@ -298,11 +298,11 @@ async def delete_AuraX(event, text, time=None, parse_mode=None, link_preview=Non
             )
         )
     else:
-        AuraXevent = await event.edit(
+        LuciferXevent = await event.edit(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await AuraXevent.delete()
+    return await LuciferXevent.delete()
 
 # from paperplaneextended
 on = bot.on
